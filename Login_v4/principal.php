@@ -30,30 +30,17 @@ session_start();
             align-items: center;
             justify-content: center;    
         }
-        .texto{
-            
-        }
+
     </style>
 </head>
 <body>
 
     <div class="container">
         <div class="texto">
-            <p>Parabéns você sabe a sua senha... 😃👍</p>
+            <p>Parabéns <?php echo "<span style = 'color: #98FB98;'><i>".$_SESSION['usuario']."</i></span>"?> &nbsp; você sabe a sua senha... 😃👍</p>
         </div>
     </div>
 
-    <?php
-        $hora = date('H');
-        if($hora > 19){
-            $saudacao = "Boa noite";
 
-        }elseif($hora > 12){
-            $saudacao = 'Boa tarde';
-        }else{
-            $saudacao = 'Bom dia';
-        }
-        echo $saudacao." ".$_SESSION['usuario'];
-    ?>
 </body>
 </html>

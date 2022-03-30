@@ -1,14 +1,12 @@
 <?php
     session_start();
-    print_r($_POST);
+    require_once 'Usuario.php';
 
     if(isset($_POST['btnLogar'])){
-        $usuario = 'admin';
-        $senhabanco = crypt(md5('123456'),'etec');;
+        $usuario = new Usuario();
+        $verifica = $usuario->verificaLogin($_POST['username'],$_POST['pass']);
 
-        $senhacripty = crypt(md5($_POST['pass']),'etec');
-
-        if($usuario == $_POST['username'] && $senhacripty === $senhabanco){
+        if($verifica == true){
             $_SESSION['usuario'] = $_POST['username']; 
             header('Location: principal.php');
         }else{
